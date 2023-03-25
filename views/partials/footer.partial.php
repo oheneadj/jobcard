@@ -1,15 +1,25 @@
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-</body>
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/gh/oheneadj/cdn/bootstrap-dashboard-assets/dashboard.js"></script>
-</body>
-
-</html>
+<footer class="bg-white rounded shadow p-5 mb-4 mt-4">
+    <div class="row">
+        <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
+            <p class="mb-0 text-center text-lg-start">© 2019-<span class="current-year"></span> <a class="text-primary fw-normal" href="https://themesberg.com" target="_blank">Themesberg</a></p>
+        </div>
+        <div class="col-12 col-md-8 col-xl-6 text-center text-lg-start">
+            <!-- List -->
+            <ul class="list-inline list-group-flush list-group-borderless text-md-end mb-0">
+                <li class="list-inline-item px-0 px-sm-2">
+                    <a href="https://themesberg.com/about">About</a>
+                </li>
+                <li class="list-inline-item px-0 px-sm-2">
+                    <a href="https://themesberg.com/themes">Themes</a>
+                </li>
+                <li class="list-inline-item px-0 px-sm-2">
+                    <a href="https://themesberg.com/blog">Blog</a>
+                </li>
+                <li class="list-inline-item px-0 px-sm-2">
+                    <a href="https://themesberg.com/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+ </main>

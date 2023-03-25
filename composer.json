@@ -1,0 +1,14 @@
+{
+    "name": "oheneadj/jobcard",
+    "type": "project",
+    "authors": [
+        {
+            "name": "oheneadj",
+            "email": "oheneadjei.dev@gmail.com"
+        }
+    ],
+    "require": {},
+    "scripts": {
+        "server": "php -S localhost:9000 -t public"
+    }
+}
