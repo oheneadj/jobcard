@@ -49,7 +49,7 @@ if ($user) {
         ':email' => $email,
         ':password' => $password
     ]);
-    dd($user);
+
     session_start();
     $_SESSION['user'] = [
         'id' => $user['id'],

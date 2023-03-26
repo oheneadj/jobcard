@@ -10,20 +10,21 @@
 
 <div class="row d-flex justify-content-start py-4">
     <?php if($devices == null) { ?>
-
-        <div class="col-12 col-md-3">
+        <div class="row d-flex justify-content-center py-4">
+            <div class="col-12 col-md-3">
                     <div class="card card-body border-0 shadow mb-4">
                         
                         <h2 class="h5 mb-4 text-center">No Device Added Yet</h2>
                         <a class="btn btn-primary" href="/device/create">Add A Device</a>  
                     </div> 
                 </div>
+        </div>
 <?php }else { ?>
 
     <?php foreach ($devices as $device) : ?>
                 <div class="col-12 col-md-3">
                     <div class="card card-body border-0 shadow mb-4">
-                        <img class="mb-3" src="../../assets/img/illustrations/404.svg" alt="IMAGE">
+                        <img class="mb-3" src="../../images/<?=$device['image']?>" height="120" alt="IMAGE">
                         <h2 class="h5 mb-4 text-center"><?=$device['name']?></h2>
                          <a class="btn btn-primary" href="/device?id=<?=$device['name']?>">View Brands</a>   
                     </div> 

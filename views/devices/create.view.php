@@ -13,43 +13,29 @@
                 <?php view('partials/alert.partial.php')  ?>
                     <div class="card card-body border-0 shadow mb-4">
                         <h2 class="h5 mb-4">Add New Device</h2>
-                        <form action="/user/create" method="POST">
+                        <form enctype="multipart/form-data" action="/device/create" method="POST">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div>
-                                        <label for="name">Name</label>
-                                        <input name="name" class="form-control" id="name" type="text" placeholder="Eg. Ohene Adjei" value="<?= $_POST['name'] ?? 'Ohene Adjei'?>" required>
+                                        <label for="image">Image</label>
+                                        <input name="image" class="form-control" id="image" type="file" accept="image/png, image/jpeg" value="<?= $_POST['image'] ?? ''?>" required>
+                                    </div>
+                                    <?php if(isset($errors['image'])) :?>
+                                                <span class="text-danger mt-1"><?=$errors['image']; ?></span>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <div>
+                                        <label for="name">Device Name</label>
+                                        <input name="name" class="form-control" id="name" type="text" placeholder="Eg. Laptop" value="<?= $_POST['name'] ?? ''?>" required="">
                                     </div>
                                     <?php if(isset($errors['name'])) :?>
                                                 <span class="text-danger mt-1"><?=$errors['name']; ?></span>
                                     <?php endif;?>
                                 </div>
                                 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <div>
-                                        <label for="email">Email</label>
-                                        <input name="email" class="form-control" id="email" type="email" placeholder="ohene@example.com" value="<?= $_POST['email'] ?? 'nanajaam@gmail.com'?>" required="">
-                                    </div>
-                                    <?php if(isset($errors['email'])) :?>
-                                                <span class="text-danger mt-1"><?=$errors['email']; ?></span>
-                                    <?php endif;?>
-                                </div>
-                                
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-md-12 mb-3">
-                                    <label for="user-type">User Type</label>
-                                    <select name="user-type" class="form-select mb-0" id="user-type" aria-label="Select user type">
-                                        <option selected="">Select User Type</option>
-                                        <option value="1">Admin</option>
-                                        <option value="2">User</option>
-                                    </select>
-                                </div>
-                                <?php if(isset($errors['user_type'])) :?>
-                                                <span class="text-danger mt-1"><?=$errors['user_type']; ?></span>
-                                <?php endif;?>
                             </div>
                             <div class="mt-3 d-flex justify-content-end">
                                 <button name="submit" class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Create New Device</button>

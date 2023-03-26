@@ -6,9 +6,7 @@
 
 <?php view('partials/header.partial.php')  ?>
 
-            <div class="py-4">
-                
-            </div>
+<?php view('partials/add-new.partial.php') ?>
             <div class="row d-flex justify-content-center py-4">
                 <div class="col-12 col-md-6">
                 <?php view('partials/alert.partial.php')  ?>

@@ -43,7 +43,7 @@ $router->get('/device', 'controllers/devices/show.php');
 $router->get('/device/create', 'controllers/devices/create.php');
 $router->get('/device/edit', 'controllers/devices/edit.php');
 // Actions
-$router->post('/devices', 'controllers/devices/store.php');
+$router->post('/device/create', 'controllers/devices/store.php');
 $router->patch('/device/edit', 'controllers/devices/update.php');
 $router->delete('/device', 'controllers/devices/destroy.php');
 
