@@ -8,7 +8,7 @@ $router->get('/dashboard', 'controllers/dashboard.php');
 $router->get('/login', 'controllers/auth/login.php')->only('guest');
 $router->get('/register', 'controllers/auth/register.php')->only('guest');
 // Actions
-$router->post('/login', 'controllers/auth/session_start.php');
+$router->post('/login', 'controllers/auth/login-user.php');
 $router->post('/register', 'controllers/auth/store.php');
 $router->delete('/logout', 'controllers/auth/destroy.php');
 
@@ -19,7 +19,7 @@ $router->get('/user', 'controllers/users/show.php');
 $router->get('/user/create', 'controllers/users/create.php');
 $router->get('/user/edit', 'controllers/users/edit.php');
 // Actions
-$router->post('/user/create', 'controllers/users/store.php');
+$router->post('/users', 'controllers/users/store.php');
 $router->patch('/user/edit', 'controllers/users/update.php');
 $router->delete('/user', 'controllers/users/destroy.php');
 $router->post('/password-reset', 'controllers/users/password-reset.php');
@@ -35,18 +35,6 @@ $router->get('/job/edit', 'controllers/jobs/edit.php');
 $router->post('/jobs', 'controllers/jobs/store.php');
 $router->patch('/job/edit', 'controllers/jobs/update.php');
 $router->delete('/job', 'controllers/jobs/destroy.php');
-
-# Devices
-// Pages
-$router->get('/devices', 'controllers/devices/index.php');
-$router->get('/device', 'controllers/devices/show.php');
-$router->get('/device/create', 'controllers/devices/create.php');
-$router->get('/device/edit', 'controllers/devices/edit.php');
-// Actions
-$router->post('/devices', 'controllers/devices/store.php');
-$router->patch('/device/edit', 'controllers/devices/update.php');
-$router->delete('/device', 'controllers/devices/destroy.php');
-
 
 # Brands
 // Pages

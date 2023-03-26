@@ -10,7 +10,6 @@ $config = require  base_path('config.php');
 $db = new Database($config['database']);
 
 
-
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
 
@@ -53,7 +52,8 @@ if(password_verify($password, $user['password'])) {
     $_SESSION['user'] = [
         'id'=> $user['uuid'],
         'email' => $email,
-        'name' =>  $user['name']
+        'name' =>  $user['name'],
+        'user_type' =>  $user['user_type']
     ];
 
     header('location: /dashboard');
