@@ -1,4 +1,4 @@
 <?php
 
 
- view('login.view.php', []);
+ view('index.view.php', []);

@@ -10,4 +10,8 @@ class Validator {
     public static function email($value){
         return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
+
+    public static function user_type($value){
+        return $value == 1 || $value == 2;
+    }
 }

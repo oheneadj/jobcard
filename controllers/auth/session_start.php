@@ -1,5 +1,6 @@
 <?php
 
+
 use Core\Database;
 use Core\Validator;
 
@@ -7,6 +8,8 @@ require base_path('Core/Validator.php');
 $config = require  base_path('config.php');
 
 $db = new Database($config['database']);
+
+
 
 $email = htmlspecialchars($_POST['email']);
 $password = htmlspecialchars($_POST['password']);
@@ -25,7 +28,7 @@ if (!Validator::string($password, 7, 225)) {
 }
 
 if (!empty($errors)) {
-    view('login.view.php', ['errors' => $errors]);
+    view('index.view.php', ['errors' => $errors]);
     exit();
 }
 
@@ -38,14 +41,17 @@ $user = $db->query('select * from users where email = :email', [
 # If yes, redirect to the login page
 if (!$user) {
     $errors['user'] = 'No user found with this email. ';
-    view('login.view.php', ['errors' => $errors]);
+    view('index.view.php', ['errors' => $errors]);
     exit();
 } 
 
-if($password == $user['password']) {
+
+if(password_verify($password, $user['password'])) {
+    
     session_start();
+
     $_SESSION['user'] = [
-        'id'=> $user['id'],
+        'id'=> $user['uuid'],
         'email' => $email,
         'name' =>  $user['name']
     ];

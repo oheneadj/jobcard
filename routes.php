@@ -19,7 +19,7 @@ $router->get('/user', 'controllers/users/show.php');
 $router->get('/user/create', 'controllers/users/create.php');
 $router->get('/user/edit', 'controllers/users/edit.php');
 // Actions
-$router->post('/users', 'controllers/users/store.php');
+$router->post('/user/create', 'controllers/users/store.php');
 $router->patch('/user/edit', 'controllers/users/update.php');
 $router->delete('/user', 'controllers/users/destroy.php');
 $router->post('/password-reset', 'controllers/users/password-reset.php');
