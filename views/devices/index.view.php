@@ -24,9 +24,9 @@
     <?php foreach ($devices as $device) : ?>
                 <div class="col-12 col-md-3">
                     <div class="card card-body border-0 shadow mb-4">
-                        <img class="mb-3" src="../../images/<?=$device['image']?>" height="120" alt="IMAGE">
+                        <img class="mb-3" src="../../images/<?=$device['image']?>" height="160" alt="<?=$device['name']?>">
                         <h2 class="h5 mb-4 text-center"><?=$device['name']?></h2>
-                         <a class="btn btn-primary" href="/device?id=<?=$device['name']?>">View Brands</a>   
+                         <a class="btn btn-primary" href="/device?id=<?=$device['name']?>">View Brands</a> 
                     </div> 
                 </div>
 
