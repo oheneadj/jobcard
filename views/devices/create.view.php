@@ -11,13 +11,18 @@
 <div class="row d-flex justify-content-center py-4">
                 <div class="col-12 col-md-6">
                 <?php view('partials/alert.partial.php')  ?>
+
+                <?php if(isset($errors['create_error'])) :?>
+                    <p class="bg-danger text-center text-white rounded px-3 py-1 text-sm"><?=$errors['create_error']; ?></p>
+                    <?php endif;?>
+
                     <div class="card card-body border-0 shadow mb-4">
                         <h2 class="h5 mb-4">Add New Device</h2>
                         <form enctype="multipart/form-data" action="/device/create" method="POST">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div>
-                                        <label for="image">Image</label>
+                                        <label for="image"> Device Image</label>
                                         <input name="image" class="form-control" id="image" type="file" accept="image/png, image/jpeg" value="<?= $_POST['image'] ?? ''?>" required>
                                     </div>
                                     <?php if(isset($errors['image'])) :?>

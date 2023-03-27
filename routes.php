@@ -55,7 +55,7 @@ $router->get('/brand', 'controllers/brands/show.php');
 $router->get('/brand/create', 'controllers/brands/create.php');
 $router->get('/brand/edit', 'controllers/brands/edit.php');
 // Actions
-$router->post('/brands', 'controllers/brands/store.php');
+$router->post('/brand/create', 'controllers/brands/store.php');
 $router->patch('/brand/edit', 'controllers/brands/update.php');
 $router->delete('/brand', 'controllers/brands/destroy.php');
 
@@ -67,7 +67,7 @@ $router->get('/model', 'controllers/models/show.php');
 $router->get('/model/create', 'controllers/models/create.php');
 $router->get('/model/edit', 'controllers/models/edit.php');
 // Actions
-$router->post('/models', 'controllers/models/store.php');
+$router->post('/model/create', 'controllers/models/store.php');
 $router->patch('/model/edit', 'controllers/models/update.php');
 $router->delete('/model', 'controllers/models/destroy.php');
 

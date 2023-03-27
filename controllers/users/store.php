@@ -3,6 +3,7 @@
 use Core\Database;
 use Core\Validator;
 
+
 require base_path('Core/Validator.php');
 $config = require  base_path('config.php');
 
@@ -42,18 +43,20 @@ $user = $db->query('select * from users where email = :email', [
 
 # If yes, redirect to the login page
 if ($user) {
+    $errors['user_exists'] = 'A user exists with the same email';
     view('users/create.view.php', ['errors' => $errors]);
     exit();
 } else {
-    $user = $db->query('insert into users (uuid, name, email, user_type, password) values (:uuid, :name, :email, :user_type, :password)', [
+    $user = $db->query('insert into users (uuid, name, email, user_type, password, created_by) values (:uuid, :name, :email, :user_type, :password, :created_by)', [
         ':uuid' => genUUID(),
         ':name' => $name,
         ':email' => $email,
         ':user_type' => $user_type,
-        ':password' => password_hash("@password@", PASSWORD_BCRYPT)
+        ':password' => password_hash("@password@", PASSWORD_BCRYPT),
+        ':created_by' => $_SESSION['user']['id']
     ]);
 
 
-    view('users/create.view.php', ['errors' => $errors]);
+    header("location: /users");
     exit();
 }

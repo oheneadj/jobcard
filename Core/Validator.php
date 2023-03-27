@@ -14,4 +14,7 @@ class Validator {
     public static function user_type($value){
         return $value == 1 || $value == 2;
     }
+    public static function not_null (){
+        //
+    }
 }

@@ -33,20 +33,21 @@ $device = $db->query('select * from devices where name = :name', [
 ])->find();
 
 if($device){
-    $errors['name'] = 'A device exist with the same name';
+    $errors['create_error'] = 'A device exists with the same name';
     view('/devices/create.view.php', ['errors' => $errors]);
     exit();
 }else{
 
-    $db->query('insert into devices (name, image) values (:name, :image)', [
+    $db->query('insert into devices (name, image, created_by) values (:name, :image, :created_by)', [
         ':name' => $name,
         ':image' => $filename,
+        ':created_by' => $_SESSION['user']['id']
     ]);
     if (move_uploaded_file($tempname, $folder)) {
         header("location: /devices");
     exit();
     } else {
-        $errors['name'] = 'Error creating device. Please try again';
+        $errors['create_error'] = 'Error creating device. Please try again';
         view('/devices/create.view.php', ['errors' => $errors]);
     exit();
     }

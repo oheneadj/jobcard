@@ -4,25 +4,45 @@
 
 <?php view('partials/sidebar.partial.php')  ?>
 
-<?php view('partials/header.partial.php')  ?>
+<?php view('partials/header.partial.php') ?>
 
 <?php view('partials/add-new.partial.php') ?>
-            <div class="row d-flex justify-content-center py-4">
+
+<div class="row d-flex justify-content-center py-4">
                 <div class="col-12 col-md-6">
                 <?php view('partials/alert.partial.php')  ?>
 
-                    <?php if(isset($errors['user_exists'])) :?>
-                    <p class="bg-danger text-center text-white rounded px-3 py-1 text-sm"><?=$errors['user_exists']; ?></p>
+                <?php if(isset($errors['model_exists'])) :?>
+                    <p class="bg-danger text-center text-white rounded px-3 py-1 text-sm"><?=$errors['model_exists']; ?></p>
                     <?php endif;?>
 
                     <div class="card card-body border-0 shadow mb-4">
-                        <h2 class="h5 mb-4">Add New User</h2>
-                        <form action="/user/create" method="POST">
+                        <h2 class="h5 mb-4">Add Model</h2>
+                        <form action="/model/create" method="POST">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div>
-                                        <label for="name">Name</label>
-                                        <input name="name" class="form-control" id="name" type="text" placeholder="Eg. Ohene Adjei" value="<?= $_POST['name'] ?? 'Ohene Adjei'?>" required>
+                                        <label for="brand">Brand</label>
+                                        <select name="brand" class="form-select mb-0" id="brand" aria-label="Select a brand">
+                                        <?php if($brands == null) {?>
+                                        <option selected="">No brand Added</option>
+                                        <?php } else {?>
+                                        <option value=""  selected="">Select a brand</option>
+                                        <?php foreach($brands as $brand) :?>    
+                                        <option value="<?=$brand['id']?>"><?=$brand['name']?></option>
+                                        <?php endforeach; } ?>
+                                    </select>
+                                    </div>
+                                    <?php if(isset($errors['brand'])) :?>
+                                                <span class="text-danger mt-1"><?=$errors['brand']; ?></span>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <div>
+                                        <label for="name">Model Name</label>
+                                        <input name="name" class="form-control" id="name" type="text" placeholder="Eg. Pavilion" value="<?= $_POST['name'] ?? ''?>" required="">
                                     </div>
                                     <?php if(isset($errors['name'])) :?>
                                                 <span class="text-danger mt-1"><?=$errors['name']; ?></span>
@@ -33,30 +53,17 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div>
-                                        <label for="email">Email</label>
-                                        <input name="email" class="form-control" id="email" type="email" placeholder="ohene@example.com" value="<?= $_POST['email'] ?? 'nanajaam@gmail.com'?>" required="">
+                                        <label for="modelNumber">Model Number</label>
+                                        <input name="modelNumber" class="form-control" id="modelNumber" type="text" placeholder="Eg. X11N2" value="<?= $_POST['modelNumber'] ?? ''?>" required="">
                                     </div>
-                                    <?php if(isset($errors['email'])) :?>
-                                                <span class="text-danger mt-1"><?=$errors['email']; ?></span>
+                                    <?php if(isset($errors['modelNumber'])) :?>
+                                                <span class="text-danger mt-1"><?=$errors['modelNumber']; ?></span>
                                     <?php endif;?>
                                 </div>
                                 
                             </div>
-                            <div class="row align-items-center">
-                                <div class="col-md-12 mb-3">
-                                    <label for="user-type">User Type</label>
-                                    <select name="user-type" class="form-select mb-0" id="user-type" aria-label="Select user type">
-                                        <option selected="">Select User Type</option>
-                                        <option value="1">Admin</option>
-                                        <option value="2">User</option>
-                                    </select>
-                                </div>
-                                <?php if(isset($errors['user_type'])) :?>
-                                                <span class="text-danger mt-1"><?=$errors['user_type']; ?></span>
-                                <?php endif;?>
-                            </div>
                             <div class="mt-3 d-flex justify-content-end">
-                                <button name="submit" class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Create User</button>
+                                <button name="submit" class="btn btn-gray-800 mt-2 animate-up-2" type="submit">Create New Brand</button>
                             </div>
                         </form>
                     </div>
