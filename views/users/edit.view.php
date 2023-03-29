@@ -11,13 +11,15 @@
                 <div class="col-12 col-md-6">
                 <?php view('partials/alert.partial.php')  ?>
 
-                    <?php if(isset($errors['user_exists'])) :?>
+                    <?php if(isset($errors['user_exists'])) {?>
                     <p class="bg-danger text-center text-white rounded px-3 py-1 text-sm"><?=$errors['user_exists']; ?></p>
-                    <?php endif;?>
-
+                    <?php } elseif (isset($errors['no_errors'])) {?>
+                        <p class="bg-success text-center text-white rounded px-3 py-1 text-sm"><?=$errors['no_errors']; ?></p> 
+                        <?php } ?>
                     <div class="card card-body border-0 shadow mb-4">
                         <h2 class="h5 mb-4">Edit User</h2>
-                        <form action="/user/create" method="POST">
+                        <form action="/user/edit" method="POST">
+                        <input type="hidden" name="_method" value="PATCH">
                             <input type="hidden" name="uuid" value="<?= $user['uuid'] ?>">
                             <div class="row">
                                 <div class="col-md-12 mb-3">
