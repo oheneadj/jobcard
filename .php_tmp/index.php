@@ -5,9 +5,10 @@ use Core\Database;
 $config = require base_path('config.php');
 $db = new Database($config['database']);
 
-$users = $db->query("select * from users")->findAll();
+$brands = $db->query("select * from brands order by created_at desc")->findAll();
 
-view("users/index.view.php", [
-    'users' => $users,
-    'db'=> $db 
+
+
+view("brands/index.view.php", [
+    'brands' => $brands 
   ]);

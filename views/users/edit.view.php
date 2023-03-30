@@ -25,7 +25,7 @@
                                 <div class="col-md-12 mb-3">
                                     <div>
                                         <label for="name">Name</label>
-                                        <input name="name" class="form-control" id="name" type="text" placeholder="Eg. Ohene Adjei" value="<?= $_POST['name'] ?? $user['name'] ?>" required>
+                                        <input name="name" class="form-control" id="name" type="text" placeholder="Eg. Ohene Adjei" value="<?= $user['name'] ?? $_POST['name'] ?>" required>
                                     </div>
                                     <?php if(isset($errors['name'])) :?>
                                                 <span class="text-danger mt-1"><?=$errors['name']; ?></span>
@@ -37,7 +37,7 @@
                                 <div class="col-md-12 mb-3">
                                     <div>
                                         <label for="email">Email</label>
-                                        <input name="email" class="form-control" id="email" type="email" placeholder="ohene@example.com" value="<?= $_POST['email'] ?? $user['email'] ?>" required="">
+                                        <input name="email" class="form-control" id="email" type="email" placeholder="ohene@example.com" value="<?= $user['email'] ?? $_POST['email'] ?>" required="">
                                     </div>
                                     <?php if(isset($errors['email'])) :?>
                                                 <span class="text-danger mt-1"><?=$errors['email']; ?></span>
@@ -49,9 +49,8 @@
                                 <div class="col-md-12 mb-3">
                                     <label for="user-type">User Type</label>
                                     <select name="user-type" class="form-select mb-0" id="user-type" aria-label="Select user type">
-                                        <option value="<?=$user['user_type']?>" selected=""><?= $user['user_type'] == 1 ? "Admin" : "User" ?></option>
-                                        <option value="1">Admin</option>
-                                        <option value="2">User</option>
+                                        <option value="1" <?= $user['user_type'] == 1 ? "selected" : "" ?> >Admin</option>
+                                        <option value="2" <?= $user['user_type'] == 2 ? "selected" : "" ?> >User</option>
                                     </select>
                                 </div>
                                 <?php if(isset($errors['user_type'])) :?>

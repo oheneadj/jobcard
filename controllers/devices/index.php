@@ -7,7 +7,7 @@ $db = new Database($config['database']);
 
 $id = $_SESSION['user']['id'];
 
-$devices = $db->query("select * from devices")->findAll();
+$devices = $db->query("select * from devices order by created_at desc")->findAll();
 
 
  view('devices/index.view.php', [
