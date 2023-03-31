@@ -20,9 +20,12 @@
         </div>
 <?php }else { ?>
     <div class="row d-flex justify-content-center py-4">
-        <div class="col-12 col-md-8">
+        
+        <div class="col-12 col-md-10">
+            
             <div class="card card-body border-0 shadow mb-4">
                     <div class="table-responsive">
+                   
                         <table class="table table-centered table-nowrap mb-0 rounded">
                             <thead class="thead-light">
                                 <tr>
@@ -41,7 +44,7 @@
                                 <tr>
                                     <td>
                                     <?php $brand = $db->query("select * from brands where id = :id", [':id' => $model['brand']])->find(); ?>
-                                    <a href="/model?id=<?=$brand['name']?>" class="text-white fw-bold"><span class="pill bg-primary rounded px-2 py-1"><?=$brand['name']?></span></a>
+                                    <a href="/brand?id=<?=$brand['id']?>" class="text-white fw-bold"><span class="pill bg-primary rounded px-2 py-1"><?=$brand['name']?></span></a>
                                     </td>
                                     <td><?=$model['model_name']?></td>
                                     <td><?=$model['model_number']?></td>
@@ -50,18 +53,22 @@
                                     <td>
                                         <div class="row d-flex align-items-center">
                                             <div class="col-12 col-xl-2 px-0">
-                                            <button class="btn btn-sm btn-info d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Edit model" data-bs-original-title="Edit model">
+                                            <a href="/model/edit?id=<?=$model['id']?>" class="btn btn-sm btn-info d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Edit model" data-bs-original-title="Edit model">
                                                 Edit
-                                            </button>
+                                            </a>
                                             </div>
                                             
                                         </div>
                                     </td>
                                     <td class="">
                                         <div class="d-flex align-items-center">
-                                        <button class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete model" data-bs-original-title="Delete model">
-                                            Delete
-                                        </button>
+                                        <form action="/model" method="POST">
+                                            <input class="d-inline-flex align-items-center" type="hidden" name="_method" value="DELETE">
+                                            <input class="d-inline-flex align-items-center" type="hidden" name="id" value="<?=$model['id']?>">
+                                            <button type="submit" class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete model" data-bs-original-title="Delete model">
+                                                Delete
+                                            </button>
+                                        </form>
                                         </div>
                                     </td>
                                 </tr>

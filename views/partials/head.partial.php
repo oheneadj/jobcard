@@ -44,11 +44,25 @@
 <!-- Volt CSS -->
 <link type="text/css" href="../../css/volt.css" rel="stylesheet">
 
+<link type="text/css" href="../../css/custom.css" rel="stylesheet">
+
 <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
 
 </head>
 
 <body>
+
+
+
+<!--begin::Page loading(append to body)-->
+<div class="spinner-wrapper">
+    <div class="spinner-border text-white" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<!--end::Page loading-->
+
+
 
 
 

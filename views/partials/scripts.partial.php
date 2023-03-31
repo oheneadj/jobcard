@@ -38,6 +38,7 @@
 
 <!-- Volt JS -->
 <script src="../../assets/js/volt.js"></script>
+<script src="../../assets/js/app.js"></script>
 
 </body>
 

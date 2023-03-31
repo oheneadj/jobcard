@@ -8,13 +8,13 @@
 
 <?php view('partials/add-new.partial.php') ?>
 
-    <?php if($users == null) { ?>
+    <?php if($models == null) { ?>
         <div class="row d-flex justify-content-center mt-5 pt-5 py-4">
             <div class="col-12 col-md-3">
                     <div class="card card-body border-0 shadow mb-4">
                         
-                        <h2 class="h5 mb-4 text-center">No User Added Yet</h2>
-                        <a class="btn btn-primary" href="/user/create">Add A User</a>  
+                        <h2 class="h5 mb-4 text-center">No models added for this brand </h2>
+                        <a class="btn btn-primary" href="/model/create">Add a model</a>  
                     </div> 
                 </div>
         </div>
@@ -22,13 +22,14 @@
     <div class="row d-flex justify-content-center py-4">
         <div class="col-12 col-md-10">
             <div class="card card-body border-0 shadow mb-4">
+
                     <div class="table-responsive">
                         <table class="table table-centered table-nowrap mb-0 rounded">
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="border-0 rounded-start">Name</th>
-                                    <th class="border-0">Permission</th>
-                                    <th class="border-0">Added By</th>
+                                    <th class="border-0 rounded-start">Brand</th>
+                                    <th class="border-0">Model Name</th>
+                                    <th class="border-0">Model Number</th>
                                     <th class="border-0">Date Added</th>
                                     <th class="border-0"></th>
                                     <th class="border-0"></th>
@@ -36,21 +37,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($users as $user) : ?>
+                            <?php foreach ($models as $model) : ?>
                                 <!-- Item -->
-
                                 <tr>
-                                    <td><a href="/user?id=<?=$user['uuid']?>" class="text-primary fw-bold"><?=$user['name']?></a></td>
-                                    <td><?= $user['user_type'] == 1 ? ' <span class="badge badge-sm bg-secondary ms-1 text-gray-800">admin</span>' : ' <span class="badge badge-sm bg-primary ms-1 text-white">user</span>'; ?></td>
                                     <td>
-                                    <?php $created_by = $db->query("select * from users where uuid = :id", [':id' => $user['created_by']])->find(); ?>
-                                    <a href="/user?id=<?=$created_by['uuid']?>" class="text-white fw-bold"><span class="badge bg-info px-2 py-1"><?=$created_by['name']?></span></a>
-                                    </td>                                  
-                                    <td><?=substr($user['created_at'], 0, 19)?></td>
+                                    <?php $brand = $db->query("select * from brands where id = :id", [':id' => $model['brand']])->find(); ?>
+                                    <span class="pill text-white bg-primary rounded px-2 py-1"><?=$brand['name']?></span>
+                                    </td>
+                                    <td><?=$model['model_name']?></td>
+                                    <td><?=$model['model_number']?></td>
+                                    <td><?=substr($model['created_at'], 0, 19)?></td>
+
                                     <td>
                                         <div class="row d-flex align-items-center">
                                             <div class="col-12 col-xl-2 px-0">
-                                            <a href="/user/edit?id=<?=$user['uuid']?>" class="btn btn-sm btn-info d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Edit user" data-bs-original-title="Edit user">
+                                            <a href="/model/edit?id=<?=$model['id']?>" class="btn btn-sm btn-info d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Edit model" data-bs-original-title="Edit model">
                                                 Edit
                                             </a>
                                             </div>
@@ -59,14 +60,13 @@
                                     </td>
                                     <td class="">
                                         <div class="d-flex align-items-center">
-                                        <form action="/users" method="POST">
+                                        <form action="/model" method="POST">
                                             <input class="d-inline-flex align-items-center" type="hidden" name="_method" value="DELETE">
-                                            <input class="d-inline-flex align-items-center" type="hidden" name="id" value="<?=$user['uuid']?>">
-                                            <button type="submit" class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete user" data-bs-original-title="Delete user">
+                                            <input class="d-inline-flex align-items-center" type="hidden" name="id" value="<?=$model['id']?>">
+                                            <button type="submit" class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete model" data-bs-original-title="Delete user">
                                                 Delete
                                             </button>
                                         </form>
-                                        
                                         </div>
                                     </td>
                                 </tr>

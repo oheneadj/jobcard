@@ -59,9 +59,13 @@
                                     </td>
                                     <td class="">
                                         <div class="d-flex align-items-center">
-                                        <button class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete Brand" data-bs-original-title="Delete Brand">
-                                            Delete
-                                        </button>
+                                        <form action="/brand" method="POST">
+                                            <input class="d-inline-flex align-items-center" type="hidden" name="_method" value="DELETE">
+                                            <input class="d-inline-flex align-items-center" type="hidden" name="id" value="<?=$brand['id']?>">
+                                            <button type="submit" class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete brand" data-bs-original-title="Delete brand">
+                                                Delete
+                                            </button>
+                                        </form>
                                         </div>
                                     </td>
                                 </tr>

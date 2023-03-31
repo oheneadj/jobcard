@@ -10,5 +10,5 @@ $db = new Database($config['database']);
 //$notes = $db->query("select * from notes")->findAll();
 
  view('dashboard.view.php', [
-    'notes' => $notes,
+   //  'notes' => $notes,
  ]);
