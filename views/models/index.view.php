@@ -45,7 +45,7 @@
                                     </td>
                                     <td><?=$model['model_name']?></td>
                                     <td><?=$model['model_number']?></td>
-                                    <td><?=$model['created_at']?></td>
+                                    <td><?=substr($model['created_at'], 0, 19)?></td>
 
                                     <td>
                                         <div class="row d-flex align-items-center">

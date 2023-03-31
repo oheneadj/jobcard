@@ -20,7 +20,7 @@
         </div>
 <?php }else { ?>
     <div class="row d-flex justify-content-center py-4">
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-7">
             <div class="card card-body border-0 shadow mb-4">
                     <div class="table-responsive">
                         <table class="table table-centered table-nowrap mb-0 rounded">
@@ -44,7 +44,7 @@
                                     <?=$brand['name']?>
                                     </td>
                                     <td>
-                                    <?=$brand['created_at']?>
+                                    <?=substr($brand['created_at'], 0, 19)?>
                                     </td>
                                     
                                     <td>

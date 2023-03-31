@@ -8,27 +8,26 @@
 
 <?php view('partials/add-new.partial.php') ?>
 
-    <?php if($users == null) { ?>
+    <?php if($brands == null) { ?>
         <div class="row d-flex justify-content-center mt-5 pt-5 py-4">
             <div class="col-12 col-md-3">
                     <div class="card card-body border-0 shadow mb-4">
                         
-                        <h2 class="h5 mb-4 text-center">No User Added Yet</h2>
-                        <a class="btn btn-primary" href="/user/create">Add A User</a>  
+                        <h2 class="h5 mb-4 text-center">No Brands Added Yet</h2>
+                        <a class="btn btn-primary" href="/brand/create">Add A Brand</a>  
                     </div> 
                 </div>
         </div>
 <?php }else { ?>
     <div class="row d-flex justify-content-center py-4">
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-7">
             <div class="card card-body border-0 shadow mb-4">
                     <div class="table-responsive">
                         <table class="table table-centered table-nowrap mb-0 rounded">
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="border-0 rounded-start">Name</th>
-                                    <th class="border-0">Permission</th>
-                                    <th class="border-0">Added By</th>
+                                    <th class="border-0 rounded-start">#</th>
+                                    <th class="border-0">Device</th>
                                     <th class="border-0">Date Added</th>
                                     <th class="border-0"></th>
                                     <th class="border-0"></th>
@@ -36,39 +35,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($users as $user) : ?>
+                            <?php foreach ($brands as $brand) : ?>
                                 <!-- Item -->
-
                                 <tr>
-                                    <td><a href="/user?id=<?=$user['uuid']?>" class="text-primary fw-bold"><?=$user['name']?></a></td>
-                                    <td><?= $user['user_type'] == 1 ? ' <span class="badge badge-sm bg-secondary ms-1 text-gray-800">admin</span>' : ' <span class="badge badge-sm bg-primary ms-1 text-white">user</span>'; ?></td>
+                                    <td><a href="#" class="text-primary fw-bold">BR10<?=$brand['id']?></a></td>
+                                    
                                     <td>
-                                    <?php $created_by = $db->query("select * from users where uuid = :id", [':id' => $user['created_by']])->find(); ?>
-                                    <a href="/user?id=<?=$created_by['uuid']?>" class="text-white fw-bold"><span class="badge bg-info px-2 py-1"><?=$created_by['name']?></span></a>
-                                    </td>                                  
-                                    <td><?=$user['created_at']?></td>
+                                    <?=$brand['name']?>
+                                    </td>
+                                    <td>
+                                    <?=substr($brand['created_at'], 0, 19)?>
+                                    </td>
+                                    
                                     <td>
                                         <div class="row d-flex align-items-center">
                                             <div class="col-12 col-xl-2 px-0">
-                                            <a href="/user/edit?id=<?=$user['uuid']?>" class="btn btn-sm btn-info d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Edit user" data-bs-original-title="Edit user">
+                                            <button class="btn btn-sm btn-info d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Edit Brand" data-bs-original-title="Edit Brand">
                                                 Edit
-                                            </a>
+                                            </button>
                                             </div>
                                             
                                         </div>
                                     </td>
                                     <td class="">
                                         <div class="d-flex align-items-center">
-
-                                        <form action="/users" method="POST">
-                  <input class="d-inline-flex align-items-center" type="hidden" name="_method" value="DELETE">
-                  <input class="d-inline-flex align-items-center" type="hidden" name="id" value="<?=$user['uuid']?>">
-                  <button type="submit" class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete user" data-bs-original-title="Delete user">
-                    Delete
-                  </button>
-                  
-                </form>
-                                        
+                                        <button class="btn btn-sm btn-danger d-inline-flex align-items-center" type="button" bs-toggle="tooltip" data-bs-placement="top" title="Delete Brand" data-bs-original-title="Delete Brand">
+                                            Delete
+                                        </button>
                                         </div>
                                     </td>
                                 </tr>

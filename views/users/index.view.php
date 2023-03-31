@@ -46,7 +46,7 @@
                                     <?php $created_by = $db->query("select * from users where uuid = :id", [':id' => $user['created_by']])->find(); ?>
                                     <a href="/user?id=<?=$created_by['uuid']?>" class="text-white fw-bold"><span class="badge bg-info px-2 py-1"><?=$created_by['name']?></span></a>
                                     </td>                                  
-                                    <td><?=$user['created_at']?></td>
+                                    <td><?=substr($user['created_at'], 0, 19)?></td>
                                     <td>
                                         <div class="row d-flex align-items-center">
                                             <div class="col-12 col-xl-2 px-0">
